@@ -55,15 +55,15 @@
     <h1>로그인</h1>
     <div class="form-floating mb-3">
         <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Input your ID</label>
+        <label id="user-id" for="floatingInput">Input your ID</label>
     </div>
     <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <input id="user-pw" type="password" class="form-control" id="floatingPassword" placeholder="Password">
         <label for="floatingPassword">Input your Password</label>
     </div>
     <div class="btn-box">
-        <button type="button" class="btn btn-dark">로그인</button>
-        <button type="button" class="btn btn-dark">회원가입</button>
+        <button onclick="login()" type="button" class="btn btn-dark">로그인</button>
+        <button onclick="makeId()" type="button" class="btn btn-dark">회원가입</button>
     </div>
     <p>아직 ID가 없다면 회원가입을 해주세요!</p>
 </div>

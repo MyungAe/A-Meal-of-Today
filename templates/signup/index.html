@@ -38,7 +38,7 @@
         .btn-box {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
 
             margin-top: 20px;
@@ -73,34 +73,33 @@
     <h1>회원가입</h1>
     <div class="overlap sign-up-id">
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <input id="new-id" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
             <label for="floatingInput">Input your ID</label>
         </div>
-        <button type="button" class="btn btn-dark">중복확인</button>
+        <button onclick="overlapId()" type="button" class="btn btn-dark">중복확인</button>
     </div>
 
     <div class="sign-up-pw">
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input id="new-pw" type="password" class="form-control" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Input your Password</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input id="agin-pw" type="password" class="form-control" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Input your Password again</label>
         </div>
     </div>
 
     <div class="overlap sign-up-name">
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <input id="new-name" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
             <label for="floatingInput">Input your nickname</label>
         </div>
-        <button type="button" class="btn btn-dark">중복확인</button>
+        <button onclick="overlapName" type="button" class="btn btn-dark">중복확인</button>
     </div>
 
     <div class="btn-box">
-        <button type="button" class="btn btn-dark">로그인</button>
-        <button type="button" class="btn btn-dark">회원가입</button>
+        <button onclick="login()" type="button" class="btn btn-dark">로그인</button>
     </div>
 </div>
 </body>
