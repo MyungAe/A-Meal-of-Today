@@ -26,6 +26,22 @@
         }
     </style>
     <script>
+
+        function upload_restaurant() {
+            let url = $('#url').val()
+            let comment = $('#comment').val()
+
+            $.ajax({
+                type: 'POST',
+                url: '/upload',
+                data: {url_give: url, comment_give: comment},
+                success: function (response) {
+                    console.log(response['msg'])
+                    window.location.reload()
+                }
+            })
+        }
+
     </script>
 </head>
 
@@ -33,15 +49,15 @@
 <body>
     <div class="myupload">
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">URL(네이버 길찾기 주소)</label>
+            <input type="email" class="form-control" id="url" placeholder="name@example.com">
+            <label for="url">URL(네이버 길찾기 주소)</label>
         </div>
         <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+            <textarea class="form-control" placeholder="Leave a comment here" id="comment"
                       style="height: 100px"></textarea>
-            <label for="floatingTextarea2">Comments</label>
+            <label for="comment">Comments</label>
         </div>
-        <button type="button" class="btn btn-secondary">등록하기</button>
+        <button onclick="upload_restaurant()" type="button" class="btn btn-secondary">등록하기</button>
 
 
     </div>
