@@ -1,0 +1,62 @@
+/* Import Component CSS */
+@import '../styles/header.css';
+@import '../styles/footer.css';
+
+/* remove browser style */
+p,
+button {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+button {
+  color: black;
+  background-color: white;
+}
+
+/* style for developer */
+
+/* page style */
+/* 
+  size guide
+  1. main target : 1920 x 1080
+  2. sub target : 1536 x 864
+*/
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.main {
+  width: 100vw;
+  height: 84vh;
+  background-color: grey;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.main > img {
+  width: 500px;
+}
+
+.main_wrap {
+  padding-bottom: 80px;
+}
+
+.main_wrap > button {
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 30px;
+  font-size: 24px;
+}
+
+.main_introduce_service {
+  font-size: 48px;
+  margin-bottom: 30px;
+}
+
+.main_introduce_service > div {
+  margin-bottom: 15px;
+}
