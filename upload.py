@@ -24,9 +24,9 @@ def home():
 
 @app.route("/upload", methods=["POST"])
 def upload_restaurant():
-    # user_receive = request.form['user_give']
+    user_receive = request.form['user_give']
     url_receive = request.form['url_give']
-    # comment_receive = request.form['comment_give']
+    comment_receive = request.form['comment_give']
 
     if 'm.place.naver.com' in url_receive:
         headers = {
@@ -44,6 +44,21 @@ def upload_restaurant():
         msg = '네이버주소 아님'
 
 
+    reataurants = db.<collection 이름>.find({'nickname': user_receive}, {'_id': False, 'restaurants':True})
+
+
+    restaurant = {
+        'index': len(restaurants) + 1,
+        'link': url_receive,
+        'name': name,
+        'addr': addr,
+        'star': star,
+        'num_of_reviews': num_of_reviews,
+        'comment': comment_receive,
+    }
+
+
+    db.<collection 이름>.update_one({'nickname':user_receive}, {$set: {'restaurants': res}})
 
 
     return jsonify({'msg':msg})
