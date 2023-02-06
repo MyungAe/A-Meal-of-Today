@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <title>signUp page</title>
+
+    <style>
+        * {
+            margin: 0px;
+        }
+
+        .wrap {
+            width: 95%;
+            max-width: 500px;
+
+            background-color: lightblue;
+
+            margin: 100px auto;
+
+            padding: 20px;
+
+            text-align: center;
+        }
+
+        .wrap > h1 {
+            margin-bottom: 20px;
+        }
+
+        .btn-box {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-top: 20px;
+        }
+
+        .btn-box > button {
+            width: 45%;
+        }
+
+        .overlap {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .overlap > .form-floating {
+            width: 80%;
+        }
+
+        .overlap > div {
+            margin-bottom: 20px;
+        }
+
+        .sign-up-pw > div {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <h1>회원가입</h1>
+    <div class="overlap sign-up-id">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Input your ID</label>
+        </div>
+        <button type="button" class="btn btn-dark">중복확인</button>
+    </div>
+
+    <div class="sign-up-pw">
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Input your Password</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Input your Password again</label>
+        </div>
+    </div>
+
+    <div class="overlap sign-up-name">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Input your nickname</label>
+        </div>
+        <button type="button" class="btn btn-dark">중복확인</button>
+    </div>
+
+    <div class="btn-box">
+        <button type="button" class="btn btn-dark">로그인</button>
+        <button type="button" class="btn btn-dark">회원가입</button>
+    </div>
+</div>
+</body>
+</html>
