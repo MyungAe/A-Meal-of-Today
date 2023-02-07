@@ -124,7 +124,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/makeNew",
+                url: "/signin",
                 data: {id_give: inputId, pw_give: inputPw, name_give: inputName},
                 success: function (response) {
                     alert(response["msg"])
@@ -137,32 +137,16 @@
 </head>
 <body>
 <div class="wrap">
-    <h1>회원가입</h1>
-    <div class="overlap sign-up-id">
-        <div class="form-floating mb-3">
-            <input id="new-id" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Input your ID</label>
-        </div>
-        <button onclick="overlapId()" type="button" class="btn btn-dark">중복확인</button>
-    </div>
-
-    <div class="sign-up-pw">
-        <div class="form-floating">
-            <input id="new-pw" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Input your Password</label>
-        </div>
-    </div>
-
+    <h1>오늘 뭐 먹지?! 닉네임</h1>
     <div class="overlap sign-up-name">
         <div class="form-floating mb-3">
             <input id="new-name" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Input your nickname</label>
+            <label for="floatingInput">닉네임을 입력해주세요</label>
         </div>
-        <button onclick="overlapName()" type="button" class="btn btn-dark">중복확인</button>
+<!--        <button onclick="overlapName()" type="button" class="btn btn-dark">중복확인</button>-->
     </div>
-
     <div class="btn-box">
-        <button onclick="login()" type="button" class="btn btn-dark">회원가입</button>
+        <button onclick="login()" type="button" class="btn btn-dark">이걸로 할게요!</button>
     </div>
 </div>
 </body>
