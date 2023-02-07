@@ -32,7 +32,11 @@ def upload_restaurant():
         data.encoding = 'utf-8'
 
         name = soup.find("span", {"class": "Fc1rA"}).text
-        star = soup.find("span", {"class": "PXMot LXIwF"}).text[2:]
+        star = soup.find("span", {"class": "PXMot LXIwF"})
+        if star is None:
+            star = 'X'
+        else:
+            star = star.text[2:]
         num_of_reviews = soup.select_one("span.PXMot > a").text[6:]
         addr = soup.find("span", {"class": "LDgIH"}).text
         msg = '등록 완료!'
