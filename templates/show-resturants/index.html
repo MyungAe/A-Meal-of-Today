@@ -51,17 +51,31 @@
             show();
         });
 
+        function delete_restaurant(num) {
+            let nickname = document.getElementById("nickname").innerText
+            $.ajax({
+                type: 'POST',
+                url: '/delete',
+                data: {'user_give': nickname, 'index_give': num},
+                success: function (response) {
+                    alert(response['msg'])
+                    window.location.replace('')
+                }
+            })
+
+        }
+
         function show() {
             let nickname = document.getElementById("nickname").innerText
-            console.log(nickname)
             $.ajax({
                 type: 'POST',
                 url: '/show',
                 data: {'user_give': nickname},
                 success: function (response) {
                     let rows = response['restaurants']
-                    console.log(rows)
+
                     for (let i = 0; i < rows.length; i++) {
+                        let index = rows[i]['index']
                         let addr = rows[i]['addr']
                         let name = rows[i]['name']
                         let link = rows[i]['link']
@@ -69,7 +83,6 @@
                         let num_of_reviews = rows[i]['num_of_reviews']
                         let comment = rows[i]['comment']
 
-                        console.log(name, link, star, num_of_reviews, comment)
                         let temp_html = `
                                         <div class="onecard">
                                             <div class="card border-info mb-3" style="max-width: 18rem;">
@@ -84,7 +97,7 @@
                                                 </div>
                                                 <div class="btns">
                                                     <button type="button" class="btn btn-outline-success">수정하기</button>
-                                                    <button type="button" class="btn btn-outline-danger">삭제하기</button>
+                                                    <button type="button" onclick="delete_restaurant(${index})" class="btn btn-outline-danger">삭제하기</button>
                                                 </div>
                                             </div>
                                         </div>
