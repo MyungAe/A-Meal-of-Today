@@ -4,28 +4,109 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
             crossorigin="anonymous"></script>
+
     <link
       rel="stylesheet"
-      href="../../static/styles/header.css"
+      href= "{{ url_for('static',filename='styles/header.css') }}"
     />
-    <link
-      rel="stylesheet"
-      href="../../static/styles/footer.css"
-    />
+
     <title>Header in Page</title>
+    <style>
+        .mycards {
+            width: 80%;
+            margin: 20px auto 0px auto;
+
+        }
+        .onecard {
+            padding: 20px;
+        }
+        .onecard > div {
+            text-align: left;
+            padding: 20px;
+        }
+
+        .btns > button {
+            margin-left: 10px;
+        }
+        .star {
+            font-size: 11pt;
+            margin: auto auto 10px auto;
+        }
+        .link {
+            font-size: 10pt;
+            font-color: gray;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            show();
+        });
+
+        function show() {
+            let nickname = document.getElementById("nickname").innerText
+            console.log(nickname)
+            $.ajax({
+                type: 'POST',
+                url: '/show',
+                data: {'user_give': nickname},
+                success: function (response) {
+                    let rows = response['restaurants']
+                    console.log(rows)
+                    for (let i = 0; i < rows.length; i++) {
+                        let addr = rows[i]['addr']
+                        let name = rows[i]['name']
+                        let link = rows[i]['link']
+                        let star = rows[i]['star']
+                        let num_of_reviews = rows[i]['num_of_reviews']
+                        let comment = rows[i]['comment']
+
+                        console.log(name, link, star, num_of_reviews, comment)
+                        let temp_html = `
+                                        <div class="onecard">
+                                            <div class="card border-info mb-3" style="max-width: 18rem;">
+                                                <div class="card-header">${addr}</div>
+                                                <div class="card-body">
+                                                    <h2 class="card-title">${name} <a class="link"
+                                                                                   href=${link}>Link</a>
+                                                    </h2>
+                                                    <p class="star">평점: ${star} 방문자리뷰수: ${num_of_reviews}</p>
+
+                                                    <p class="card-text">${comment}</p>
+                                                </div>
+                                                <div class="btns">
+                                                    <button type="button" class="btn btn-outline-success">수정하기</button>
+                                                    <button type="button" class="btn btn-outline-danger">삭제하기</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                        `
+
+                        $('#mycards-list').append(temp_html)
+
+                    }
+                }
+            })
+        }
+
+    </script>
+
   </head>
+
   <body>
     <header class="header">
       <h1>오늘 뭐 먹지?!</h1>
       <div class="menu_div">
         <div>
-          <span class="nickname">엄진식</span>
+          <span class="nickname" id="nickname">엄진식</span>
           님
         </div>
         <nav class="menu_nav">
@@ -44,34 +125,15 @@
       </div>
     </header>
     <main>
+        <div class="mycards">
+            <div class="row row-cols-1 row-cols-md-3 g-4" id="mycards-list">
 
-        <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-                <h5 class="card-title">Primary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
+
             </div>
         </div>
     </main>
-    <div class="card text-bg-warning mb-3" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-            <h5 class="card-title">Warning card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                card's content.</p>
-        </div>
-    </div>
 
-    <footer class="footer">
-        <h2 class="footer_title">오늘 뭐 먹지?!</h2>
-        <p class="footer_copyright">
-            Copyright &copy; 2022.
-            <a href="https://github.com/MyungAe/A-Meal-of-Today">
-                A-Meal-of-Today Team
-            </a>
-            . All right reserved.
-        </p>
-    </footer>
+
+
   </body>
 </html>
