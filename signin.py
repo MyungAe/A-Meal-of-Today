@@ -1,38 +1,14 @@
-from flask import Flask, render_template, request, jsonify
-from pymongo import MongoClient
-import certifi
+from flask import Flask, render_template
+import sign_feat
 
 app = Flask(__name__)
-ca = certifi.where()
-client = MongoClient('mongodb+srv://test:sparta@cluster0.g8d0ssb.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
-db = client.dbsparta
+app.register_blueprint(sign_feat.signin)
 
 
 # GET : 홈페이지
 @app.route('/', methods=['GET'])
 def home():
     return render_template('index.html')
-
-
-# GET : 회원가입
-@app.route('/signin')
-def signin():
-    return render_template('signup/index.html')
-
-
-# POST : 회원가입 정보 전달
-@app.route('/signin', methods=["POST"])
-def save_userdata():
-    name_receive = request.form['name_give']
-    # print(name_receive)
-    doc = {
-        'user': {
-            'nickname': name_receive,
-            'restaurants': []
-        }
-    }
-    db.users.insert_one(doc)
-    return jsonify({'msg': '회원가입 완료!'})
 
 
 if __name__ == '__main__':

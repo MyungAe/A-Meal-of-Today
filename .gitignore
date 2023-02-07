@@ -2,4 +2,6 @@
 /venv
 
 .idea/*
-.idea
+/.idea
+
+__pycache__
