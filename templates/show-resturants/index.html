@@ -54,7 +54,7 @@
         function delete_restaurant(num) {
             let nickname = document.getElementById("nickname").innerText
             $.ajax({
-                type: 'POST',
+                type: 'DELETE',
                 url: '/delete',
                 data: {'user_give': nickname, 'index_give': num},
                 success: function (response) {
