@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, jsonify
-app = Flask(__name__)
 
 import requests
 from bs4 import BeautifulSoup
@@ -7,14 +6,11 @@ from bs4 import BeautifulSoup
 from pymongo import MongoClient
 import certifi
 ca = certifi.where()
-client = MongoClient('mongodb+srv://test:<password>@cluster0.g8d0ssb.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
+client = MongoClient('mongodb+srv://test:sparta@cluster0.g8d0ssb.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
 db = client.dbsparta
 
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 
-import json
-
+app = Flask(__name__)
 
 
 @app.route('/')
@@ -29,8 +25,8 @@ def upload_restaurant():
     comment_receive = request.form['comment_give']
 
     if 'm.place.naver.com' in url_receive:
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) '
+                                 'Chrome/73.0.3683.86 Safari/537.36'}
         data = requests.get(url_receive, headers=headers)
         soup = BeautifulSoup(data.content, 'html.parser')
         data.encoding = 'utf-8'
@@ -39,16 +35,17 @@ def upload_restaurant():
         star = soup.find("span", {"class": "PXMot LXIwF"}).text[2:]
         num_of_reviews = soup.select_one("span.PXMot > a").text[6:]
         addr = soup.find("span", {"class": "LDgIH"}).text
-        msg = '크롤링 완료'
+        msg = '등록 완료!'
     else:
-        msg = '네이버주소 아님'
+        msg = '옳바른 네이버주소가 아니네요ㅠ'
 
-
-    reataurants = db.<collection 이름>.find({'nickname': user_receive}, {'_id': False, 'restaurants':True})
+    user = db.users.find_one({'user.nickname': user_receive}, {'_id': False})
+    restaurants_len = len(user['user']['restaurants'])
+    # restaurants = user.fin
 
 
     restaurant = {
-        'index': len(restaurants) + 1,
+        'index': restaurants_len + 1,
         'link': url_receive,
         'name': name,
         'addr': addr,
@@ -57,11 +54,10 @@ def upload_restaurant():
         'comment': comment_receive,
     }
 
+    db.users.update_one({'user.nickname': user_receive}, {'$addToSet': {'user.restaurants': restaurant}})
 
-    db.<collection 이름>.update_one({'nickname':user_receive}, {$set: {'restaurants': res}})
+    return jsonify({'msg': msg})
 
-
-    return jsonify({'msg':msg})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
