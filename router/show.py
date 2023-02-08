@@ -23,8 +23,8 @@ def show():
 
 @restaurant.route("/delete", methods=["DELETE"])
 def delete():
-    user_receive = request.args['user_give']
-    index_receive = request.args['index_give']
+    user_receive = request.form['user_give']
+    index_receive = request.form['index_give']
 
     print(user_receive, index_receive)
 
@@ -34,6 +34,8 @@ def delete():
     for i in range(len(restaurants)):
         if restaurants[i]['index'] == int(index_receive):
             del restaurants[i]
+            break
+
 
     db.users.update_one({'user.nickname': user_receive}, {'$set': {'user.restaurants': restaurants}})
 
