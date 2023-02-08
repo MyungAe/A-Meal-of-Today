@@ -1,9 +1,7 @@
 .DS_Store
 __pycache__
 /venv
-<<<<<<< HEAD
 .idea
+.idea/*
 __pycache__/
-=======
-.idea/
->>>>>>> upload_and_show
+
