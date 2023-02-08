@@ -23,12 +23,12 @@ def save_userdata():
     # print(name_receive)
     users = list(db.users.find({}, {"_id": False, "user.nickname": True}))
     nicknames = []
-    msg = name_receive + '님, 환영합니다!'
+
     for i in range(len(users)):
         nickname = users[i]['user']['nickname']
         nicknames.append(nickname)
     if name_receive in nicknames:
-        msg = '이미 사용중인 닉네임입니다.'
+        msg = name_receive + '님, 환영합니다!'
     else:
         doc = {
             'user': {
@@ -37,5 +37,6 @@ def save_userdata():
             }
         }
         db.users.insert_one(doc)
+        msg = '가입완료!'
     return jsonify({'nickname': name_receive, 'msg': msg})
 

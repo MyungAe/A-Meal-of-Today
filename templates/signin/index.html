@@ -129,12 +129,10 @@
                 success: function (response) {
                     let msg = response["msg"]
                     alert(msg)
-                    if (msg == '이미 사용중인 닉네임입니다.'){
-                        window.location.reload()
-                    } else {
-                        window.sessionStorage.setItem('nickname',response['nickname']);
-                        window.location.href = "http://localhost:5001/restaurant/"
-                    }
+
+                    window.sessionStorage.setItem('nickname',response['nickname']);
+                    window.location.href = "http://localhost:5001/restaurant/"
+
 
                 }
             });
