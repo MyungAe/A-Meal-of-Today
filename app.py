@@ -1,6 +1,13 @@
 from flask import Flask, render_template
 
+# router
+from router import sign, show
+
 app = Flask(__name__)
+
+# blueprints
+app.register_blueprint(sign.signin)
+app.register_blueprint(show.restaurant)
 
 
 # GET: 홈페이지

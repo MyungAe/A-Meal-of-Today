@@ -55,7 +55,7 @@
             let nickname = document.getElementById("nickname").innerText
             $.ajax({
                 type: 'DELETE',
-                url: '/delete',
+                url: '/restaurant/delete',
                 data: {'user_give': nickname, 'index_give': num},
                 success: function (response) {
                     alert(response['msg'])
@@ -69,7 +69,7 @@
             let nickname = document.getElementById("nickname").innerText
             $.ajax({
                 type: 'GET',
-                url: `/show?user_give=${nickname}`,
+                url: `/restaurant/show?user_give=${nickname}`,
                 data: {},
                 success: function (response) {
                     let rows = response['restaurants']
@@ -125,10 +125,10 @@
         <nav class="menu_nav">
           <ul class="menu_list">
             <li>
-              <a href="http://localhost:5000/show/"> 맛집 보기 </a>
+              <a href="http://localhost:5001/restaurant/show/"> 맛집 보기 </a>
             </li>
             <li>
-              <a href="http://localhost:5000/upload/"> 맛집 등록하기 </a>
+              <a href="http://localhost:5001/restaurant/upload/"> 맛집 등록하기 </a>
             </li>
             <li>
               <a href="#"> 맛집 랜덤 추천받기 </a>

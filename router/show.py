@@ -1,32 +1,27 @@
-from flask import Flask, render_template, request, jsonify
-
-import requests
-from bs4 import BeautifulSoup
-
+from flask import Blueprint, request, jsonify, render_template
 from pymongo import MongoClient
 import certifi
+
 ca = certifi.where()
 client = MongoClient('mongodb+srv://test:sparta@cluster0.g8d0ssb.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
 db = client.dbsparta
 
+restaurant = Blueprint('show', __name__, url_prefix="/restaurant")
 
-app = Flask(__name__)
 
-
-@app.route('/')
+@restaurant.route('/', methods=["GET"])
 def home():
     return render_template('show-resturants/index.html')
 
 
-@app.route("/show", methods=["GET"])
+@restaurant.route("/show", methods=["GET"])
 def show():
     user_receive = request.args['user_give']
     restaurants = db.users.find_one({'user.nickname': user_receive}, {'_id': False})['user']['restaurants']
-
     return jsonify({'restaurants': restaurants})
 
 
-@app.route("/delete", methods=["DELETE"])
+@restaurant.route("/delete", methods=["DELETE"])
 def delete():
     user_receive = request.form['user_give']
     index_receive = request.form['index_give']
@@ -50,7 +45,3 @@ def delete():
     # db.users.delete_one({'user.restaurants': {'index': index_receive}})
     # db.users['user']['restaurants'].delete_one({'index': index_receive})
     return jsonify({'msg': '테스트'})
-
-
-if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, debug=True)

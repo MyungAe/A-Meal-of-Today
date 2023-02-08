@@ -1,19 +1,3 @@
-from flask import Flask, render_template
-import sign_feat
-
-app = Flask(__name__)
-app.register_blueprint(sign_feat.signin)
-
-
-# GET : 홈페이지
-@app.route('/', methods=['GET'])
-def home():
-    return render_template('index.html')
-
-
-if __name__ == '__main__':
-    app.run('0.0.0.0', port=5001, debug=True)
-
 # # 아이디 중복확인 GET
 # @app.route('/overlapId', methods=['GET'])
 # def overlapId():

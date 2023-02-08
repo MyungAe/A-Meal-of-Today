@@ -7,7 +7,7 @@ ca = certifi.where()
 client = MongoClient('mongodb+srv://test:sparta@cluster0.g8d0ssb.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
 db = client.dbsparta
 
-signin = Blueprint('sign_feat', __name__, url_prefix='/signin')
+signin = Blueprint('sign', __name__, url_prefix='/signin')
 
 
 # GET : 회원가입
