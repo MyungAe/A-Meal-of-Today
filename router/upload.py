@@ -23,6 +23,11 @@ def upload_restaurant():
     url_receive = request.form['url_give']
     comment_receive = request.form['comment_give']
 
+    restaurants = db.users.find_one({'user.nickname': user_receive}, {'_id': False})['user']['restaurants']
+    for restaurant in restaurants:
+        if restaurant['link'] == url_receive:
+            return jsonify({'msg': '이미 등록되어 있는 맛집입니다 !'})
+
     if 'm.place.naver.com' in url_receive:
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) '
                                  'Chrome/73.0.3683.86 Safari/537.36'}
