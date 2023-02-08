@@ -56,7 +56,7 @@
             $.ajax({
                 type: 'DELETE',
                 url: '/restaurant/delete',
-                data: {'user_give': nickname, 'index_give': num},
+                data: {user_give: nickname, index_give: num},
                 success: function (response) {
                     alert(response['msg'])
                     window.location.reload()
@@ -125,10 +125,10 @@
         <nav class="menu_nav">
           <ul class="menu_list">
             <li>
-              <a href="http://localhost:5001/restaurant/show/"> 맛집 보기 </a>
+              <a href="http://localhost:5001/restaurant/"> 맛집 보기 </a>
             </li>
             <li>
-              <a href="http://localhost:5001/restaurant/upload/"> 맛집 등록하기 </a>
+              <a href="http://localhost:5001/restaurant/upload"> 맛집 등록하기 </a>
             </li>
             <li>
               <a href="#"> 맛집 랜덤 추천받기 </a>

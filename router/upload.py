@@ -13,6 +13,8 @@ db = client.dbsparta
 app = Flask(__name__)
 
 
+
+
 @app.route('/')
 def home():
     return render_template('upload-resturant/index.html')
@@ -45,11 +47,9 @@ def upload_restaurant():
 
     user = db.users.find_one({'user.nickname': user_receive}, {'_id': False})
     restaurants_len = len(user['user']['restaurants'])
-    # restaurants = user.fin
-
 
     restaurant = {
-        'index': user_receive + str(restaurants_len + 1),
+        'index': restaurants_len + 1,
         'link': url_receive,
         'name': name,
         'addr': addr,
