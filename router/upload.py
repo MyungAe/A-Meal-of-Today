@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import render_template, request, jsonify, Blueprint
 
 import requests
 from bs4 import BeautifulSoup
@@ -9,18 +9,15 @@ ca = certifi.where()
 client = MongoClient('mongodb+srv://test:sparta@cluster0.g8d0ssb.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
 db = client.dbsparta
 
-
-app = Flask(__name__)
-
+register = Blueprint('upload', __name__, url_prefix='/restaurant/register')
 
 
-
-@app.route('/')
+@register.route('/')
 def home():
     return render_template('upload-resturant/index.html')
 
 
-@app.route("/upload", methods=["POST"])
+@register.route("/upload", methods=["POST"])
 def upload_restaurant():
     user_receive = request.form['user_give']
     url_receive = request.form['url_give']
@@ -61,7 +58,3 @@ def upload_restaurant():
     db.users.update_one({'user.nickname': user_receive}, {'$addToSet': {'user.restaurants': restaurant}})
 
     return jsonify({'msg': msg})
-
-
-if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, debug=True)

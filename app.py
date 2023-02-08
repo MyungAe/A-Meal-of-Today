@@ -1,13 +1,14 @@
 from flask import Flask, render_template
 
 # router
-from router import sign, show
+from router import sign, show, upload
 
 app = Flask(__name__)
 
 # blueprints
 app.register_blueprint(sign.signin)
 app.register_blueprint(show.restaurant)
+app.register_blueprint(upload.register)
 
 
 # GET: 홈페이지
