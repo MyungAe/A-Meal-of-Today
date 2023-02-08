@@ -49,7 +49,7 @@ def upload_restaurant():
 
 
     restaurant = {
-        'index': restaurants_len + 1,
+        'index': user_receive + str(restaurants_len + 1),
         'link': url_receive,
         'name': name,
         'addr': addr,
