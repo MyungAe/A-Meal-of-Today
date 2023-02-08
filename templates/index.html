@@ -18,17 +18,18 @@
     />
     <title>오늘 뭐 먹지?!</title>
     <script>
-      // $(document).ready(function () {
-      //   start_page();
-      // });
+      $(document).ready(function () {
+        if (sessionStorage.length == '1') {
+          let nickname = sessionStorage.getItem('nickname')
+          let nickname_html = `${nickname} 님`
+          $('.nickname').append(nickname_html)
+        }
+      });
 
       function start_page() {
         if (sessionStorage.length == '0') {
           window.location.href = "http://localhost:5001/signin/"
         } else {
-          let nickname = sessionStorage.getItem('nickname')
-          let nickname_html = `${nickname} 님`
-          $('.nickname').append(nickname_html)
           window.location.href = "http://localhost:5001/restaurant/"
         }
       }
@@ -52,7 +53,7 @@
               <a href="http://localhost:5001/restaurant/register"> 맛집 등록하기 </a>
             </li>
             <li>
-              <a href="#"> 맛집 랜덤 추천받기 </a>
+              <a href="http://localhost:5001/select"> 맛집 랜덤 추천받기 </a>
             </li>
           </ul>
         </nav>
