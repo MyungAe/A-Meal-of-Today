@@ -10,14 +10,27 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <link
       rel="stylesheet"
       href="{{ url_for('static',filename='styles/homepage.css') }}"
     />
     <title>오늘 뭐 먹지?!</title>
     <script>
+      // $(document).ready(function () {
+      //   start_page();
+      // });
+
       function start_page() {
-        
+        if (sessionStorage.length == '0') {
+          window.location.href = "http://localhost:5001/signin/"
+        } else {
+          let nickname = sessionStorage.getItem('nickname')
+          let nickname_html = `${nickname} 님`
+          $('.nickname').append(nickname_html)
+          window.location.href = "http://localhost:5001/restaurant/"
+        }
       }
     </script>
   </head>
@@ -51,7 +64,7 @@
           <h2>내 주변의 맛집을 찾아보고 기록하세요.</h2>
           <h2>나만의 맛집 저장소, 오늘 뭐 먹지?!</h2>
         </div>
-        <button onclick="window.location.href='http://localhost:5001/signin/'">맛집 찾아보기</button>
+        <button onclick="start_page()">맛집 찾아보기</button>
       </section>
       <img
         src="https://cdn.pixabay.com/photo/2018/06/29/08/15/doodle-3505459__340.png"
