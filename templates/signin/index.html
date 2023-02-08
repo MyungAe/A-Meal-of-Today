@@ -132,7 +132,7 @@
                     if (msg == '이미 사용중인 닉네임입니다.'){
                         window.location.reload()
                     } else {
-                        //닉네임 local storagy 저장하기
+                        window.sessionStorage.setItem('nickname',response['nickname']);
                         window.location.href = "http://localhost:5001/restaurant/"
                     }
 

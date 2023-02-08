@@ -66,24 +66,30 @@
         }
 
         function show() {
-            let nickname = document.getElementById("nickname").innerText
-            $.ajax({
+            if (sessionStorage.length == '0') {
+                window.location.href = "http://localhost:5001/signin/"
+            } else {
+              let nickname = sessionStorage.getItem('nickname')
+              let nickname_html = `${nickname}`
+              $('#nickname').append(nickname_html)
+
+              $.ajax({
                 type: 'GET',
                 url: `/restaurant/show?user_give=${nickname}`,
                 data: {},
                 success: function (response) {
-                    let rows = response['restaurants']
+                  let rows = response['restaurants']
 
-                    for (let i = 0; i < rows.length; i++) {
-                        let index = rows[i]['index']
-                        let addr = rows[i]['addr']
-                        let name = rows[i]['name']
-                        let link = rows[i]['link']
-                        let star = rows[i]['star']
-                        let num_of_reviews = rows[i]['num_of_reviews']
-                        let comment = rows[i]['comment']
+                  for (let i = 0; i < rows.length; i++) {
+                    let index = rows[i]['index']
+                    let addr = rows[i]['addr']
+                    let name = rows[i]['name']
+                    let link = rows[i]['link']
+                    let star = rows[i]['star']
+                    let num_of_reviews = rows[i]['num_of_reviews']
+                    let comment = rows[i]['comment']
 
-                        let temp_html = `
+                    let temp_html = `
                                         <div class="onecard">
                                             <div class="card border-info mb-3" style="max-width: 18rem;">
                                                 <div class="card-header">${addr}</div>
@@ -103,11 +109,15 @@
                                         </div>
                         `
 
-                        $('#mycards-list').append(temp_html)
+                    $('#mycards-list').append(temp_html)
 
-                    }
+
+                  }
                 }
-            })
+              })
+            }
+
+
         }
 
     </script>
@@ -121,7 +131,8 @@
       </a>
       <div class="menu_div">
         <div>
-          <span class="nickname" id="nickname">엄진식</span>
+          <span class="nickname" id="nickname">
+          </span>
           님
         </div>
         <nav class="menu_nav">

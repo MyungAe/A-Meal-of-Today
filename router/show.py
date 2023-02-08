@@ -43,7 +43,7 @@ def delete():
     # db.users['user'].update_one({'nickname': user_receive}, {'$pull': {"restaurants": {'index': index_receive}}})
 
     #(둘다 안 됨)
-    # db.users.delete_one({'user.nickname': "poordooby"})
+
     # db.users.delete_one({'user.restaurants': {'index': index_receive}})
     # db.users['user']['restaurants'].delete_one({'index': index_receive})
     return jsonify({'msg': '테스트'})
