@@ -21,6 +21,24 @@ def show():
     return jsonify({'restaurants': restaurants})
 
 
+@restaurant.route("/upload", methods=["PATCH"])
+def upload():
+    user_receive = request.form['user_give']
+    index_receive = request.form['index_give']
+    comment_receive = request.form['comment_give']
+
+    restaurants = db.users.find_one({'user.nickname': user_receive}, {'_id': False})['user']['restaurants']
+
+    for i in range(len(restaurants)):
+        if restaurants[i]['index'] == int(index_receive):
+            restaurants[i]['comment'] = comment_receive
+            break
+
+    db.users.update_one({'user.nickname': user_receive}, {'$set': {'user.restaurants': restaurants}})
+
+    return jsonify({'msg': '응답'})
+
+
 @restaurant.route("/delete", methods=["DELETE"])
 def delete():
     user_receive = request.form['user_give']
