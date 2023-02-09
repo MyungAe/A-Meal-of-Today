@@ -28,49 +28,53 @@ button {
 body {
   width: 100vw;
   height: 100vh;
-  font-family: 'jua', sans-serif;
+  font-family: 'Jua', sans-serif;
 }
 
-.main {
-  width: 100vw;
+.select_wrap {
+  width: inherit;
   height: 84vh;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-.main > img {
-  width: 700px;
+.select_explain > p {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.custom_card_wrap {
+  min-width: 500px;
+  min-height: 300px;
   border-radius: 10px;
+  padding: 20px;
+  background-color: #1c773e;
+  color: #ffffff;
   box-shadow: 3px 3px 3px 3px #555555;
 }
 
-.main_wrap {
-  padding-bottom: 80px;
+.custom_card_title {
+  font-size: 60px;
 }
 
-.main_wrap > button {
-  background-color: #ffe259;
-  padding: 20px;
-  border-radius: 20px;
+.custom_card_link {
+  color: #000000;
+}
+
+.custom_card_link,
+.custom_card_address,
+.custom_card_star,
+.custom_card_reviews,
+.custom_card_comment {
   font-size: 24px;
 }
 
-.main_introduce_service {
-  font-size: 40px;
-  margin-bottom: 30px;
+.custom_card_star {
 }
 
-.main_introduce_service > p {
-  margin-bottom: 40px;
+.custom_card_reviews {
 }
 
-.home_btn {
-  font-family: 'jua', sans-serif;
-  box-shadow: 2px 2px 2px 2px #555555, -2px -2px 2px 2px #ffffff;
-}
-
-.home_btn:hover {
-  background-color: #f0816c;
-  color: #ffffff;
+.custom_card_comment {
 }

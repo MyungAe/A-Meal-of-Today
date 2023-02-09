@@ -2,132 +2,139 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-          rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-          crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-            crossorigin="anonymous"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
 
     <link
       rel="stylesheet"
-      href= "{{ url_for('static',filename='styles/header.css') }}"
+      href="{{ url_for('static',filename='styles/select.css') }}"
     />
 
     <title>Header in Page</title>
     <style>
-        .mycards {
-            width: 80%;
-            margin: 20px auto 0px auto;
+      .onecard {
+        padding: 20px;
+      }
+      .onecard > div {
+        text-align: left;
+        padding: 20px;
+      }
 
-        }
-        .onecard {
-            padding: 20px;
-        }
-        .onecard > div {
-            text-align: left;
-            padding: 20px;
-        }
+      .btns > button {
+        margin-left: 10px;
+      }
 
-        .btns > button {
-            margin-left: 10px;
-        }
-        .star {
-            font-size: 11pt;
-            margin: auto auto 10px auto;
-        }
-        .link {
-            font-size: 10pt;
-            font-color: gray;
-        }
-        main {
-          margin-top: 10%;
-        }
+      .link {
+        font-size: 10pt;
+        color: gray;
+      }
     </style>
     <script>
-        $(document).ready(function () {
-            random();
-        });
+      $(document).ready(function () {
+        random();
+      });
 
-        function random() {
-            if (sessionStorage.length == '0') {
-                window.location.href = "http://43.200.1.210/signin/"
-            } else {
-              let nickname = sessionStorage.getItem('nickname')
-              let nickname_html = `${nickname}`
-              $('#nickname').append(nickname_html)
+      function random() {
+        if (sessionStorage.length == '0') {
+          window.location.href = 'http://43.200.1.210/signin/';
+        } else {
+          let nickname = sessionStorage.getItem('nickname');
+          let nickname_html = `${nickname}`;
+          $('#nickname').append(nickname_html);
 
-              $.ajax({
-                type: 'GET',
-                url: `/select/random?user_give=${nickname}`,
-                data: {},
-                success: function (response) {
-                  let rows = response['restaurants']
-                  let random_num = response['random_num']
-                  let msg = response['msg']
+          $.ajax({
+            type: 'GET',
+            url: `/select/random?user_give=${nickname}`,
+            data: {},
+            success: function (response) {
+              let rows = response['restaurants'];
+              let random_num = response['random_num'];
+              let msg = response['msg'];
 
-                  if (msg == '먼저 맛집을 등록해주세요!') {
-                      alert(msg)
+              if (msg == '먼저 맛집을 등록해주세요!') {
+                alert(msg);
+              } else {
+                for (let i = 0; i < rows.length; i++) {
+                  if (rows[i]['index'] == random_num) {
+                    let addr = rows[i]['addr'];
+                    let name = rows[i]['name'];
+                    let link = rows[i]['link'];
+                    let star = rows[i]['star'];
+                    let num_of_reviews = rows[i]['num_of_reviews'];
+                    let comment = rows[i]['comment'];
 
-                  } else {
-                    for (let i = 0; i < rows.length; i++) {
+                    // let temp_html = `
+                    //                     <div class="onecard">
+                    //                         <div class="card border-info" style="font-size: 20px">
+                    //                             <div class="card-header style="">${addr}</div>
+                    //                             <div class="card-body">
+                    //                                 <h2 class="card-title">${name}
+                    //                                   <a class="link" href=${link}>Link</a>
+                    //                                 </h2>
+                    //                                 <p class="star">평점: ${star}</p>
+                    //                                 <p class="reviews">방문자리뷰수: ${num_of_reviews}</p>
 
-                      if (rows[i]['index'] == random_num) {
-                        let addr = rows[i]['addr']
-                        let name = rows[i]['name']
-                        let link = rows[i]['link']
-                        let star = rows[i]['star']
-                        let num_of_reviews = rows[i]['num_of_reviews']
-                        let comment = rows[i]['comment']
+                    //                                 <p class="card-text">${comment}</p>
+                    //                             </div>
 
-                        let temp_html = `
-                                        <div class="onecard">
-                                            <div class="card border-info mb-3" style="max-width: 18rem;">
-                                                <div class="card-header">${addr}</div>
-                                                <div class="card-body">
-                                                    <h2 class="card-title">${name} <a class="link"
-                                                                                   href=${link}>Link</a>
+                    //                         </div>
+                    //                     </div>
+                    //     `;
+
+                    const temp_html = `
+                                        <div class='custom_card_wrap'>
+                                            <div>
+                                                <div class="custom_card_address">${addr}</div>
+                                                <div>
+                                                    <h2 class="custom_card_title">${name}
+                                                      <a class="custom_card_link" href=${link}>Link</a>
                                                     </h2>
-                                                    <p class="star">평점: ${star} 방문자리뷰수: ${num_of_reviews}</p>
-
-                                                    <p class="card-text">${comment}</p>
+                                                    <p class="custom_card_star">평점: ${star}</p>
+                                                    <p class="custom_card_reviews">리뷰 수: ${num_of_reviews}</p>
+                                                    <p class="custom_card_comment">코멘트 : ${comment}</p>
                                                 </div>
-
                                             </div>
                                         </div>
-                        `
+                        `;
 
-                        $('#mycards-list').append(temp_html)
-                        break;
-                      }
-                    }
+                    $('#mycards-list').append(temp_html);
+                    break;
                   }
-
                 }
-              })
-            }
-
-
+              }
+            },
+          });
         }
-
+      }
     </script>
-
   </head>
-
   <body>
     <header class="header">
       <a href="http://43.200.1.210">
-        <h1>오늘 뭐 먹지?!</h1>
+        <h1 class="header_title">오늘 뭐 먹지?!</h1>
       </a>
       <div class="menu_div">
         <div>
-          <span class="nickname" id="nickname">
-          </span>
+          <span
+            class="nickname"
+            id="nickname"
+          ></span>
           님
         </div>
         <nav class="menu_nav">
@@ -136,7 +143,9 @@
               <a href="http://43.200.1.210/restaurant/"> 맛집 보기 </a>
             </li>
             <li>
-              <a href="http://43.200.1.210/restaurant/register"> 맛집 등록하기 </a>
+              <a href="http://43.200.1.210/restaurant/register">
+                맛집 등록하기
+              </a>
             </li>
             <li>
               <a href="http://43.200.1.210/select"> 맛집 랜덤 추천받기 </a>
@@ -145,16 +154,23 @@
         </nav>
       </div>
     </header>
-    <main>
-        <div class="mycards">
-            <div class="row row-cols-1 row-cols-md-3 g-4" id="mycards-list">
-
-
-            </div>
-        </div>
+    <main class="select_wrap">
+      <div class="select_explain">
+        <p>오늘의 추천 맛집은</p>
+        <p>바로 여기입니다!</p>
+      </div>
+      <div class="mycards">
+        <div id="mycards-list"></div>
+      </div>
     </main>
-
-
-
+    <footer class="footer">
+      <p class="footer_copyright">
+        Copyright &copy; 2022.
+        <a href="https://github.com/MyungAe/A-Meal-of-Today">
+          A-Meal-of-Today Team
+        </a>
+        . All right reserved.
+      </p>
+    </footer>
   </body>
 </html>

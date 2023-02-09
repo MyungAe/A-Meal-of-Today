@@ -31,63 +31,43 @@ body {
   font-family: 'jua', sans-serif;
 }
 
-.btn {
-  background-color: #ffe259;
-  color: #000000;
-  border: 0;
-  box-shadow: 2px 2px 2px 2px #555555;
-}
-
-.signin_wrap {
+.upload_wrap {
   width: inherit;
   height: 84vh;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 }
 
-.wrap {
-  width: 95%;
-  max-width: 500px;
-  background-color: #1c773e;
-  color: #ffffff;
-  padding: 20px;
+.upload_explain > p {
+  font-size: 32px;
+}
+
+.myupload {
+  width: 100%;
+  max-width: 550px;
+  padding: 30px;
+  box-shadow: 0px 0px 3px 0px gray;
   text-align: center;
 }
 
-#floatingInput::placeholder,
-.upload-form-color {
-  color: #1c773e;
+.myupload {
+  background-color: #1c773e;
+  /* color: #ffffff; */
 }
 
-.wrap {
-  width: 100%;
-  max-width: 500px;
-  padding: 30px;
-  box-shadow: 0px 0px 3px 0px gray;
+.myupload > button {
+  margin-top: 10px;
+  text-align: center;
+  color: #000000;
+  background-color: #ffe259;
+  box-shadow: 2px 2px 2px 2px #555555;
 }
 
-.wrap > button {
-  width: 45%;
+.form-control {
+  font-size: 24px;
 }
 
-.overlap {
-  align-items: center;
-  margin: 30px 0;
-}
-
-.overlap > .form-floating {
-  width: 100%;
-}
-
-.overlap > div {
-  margin-bottom: 20px;
-}
-
-.sign-up-pw > div {
-  margin-bottom: 20px;
-}
-.signin_explain > p {
-  font-size: 32px;
-  margin-bottom: 20px;
+.upload_explain_strong {
+  color: #f0816c;
 }
