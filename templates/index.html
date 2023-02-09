@@ -21,7 +21,7 @@
       $(document).ready(function () {
         if (sessionStorage.length == '1') {
           let nickname = sessionStorage.getItem('nickname');
-          let nickname_html = `${nickname} 님`;
+          let nickname_html = `${nickname} `;
           $('.nickname').append(nickname_html);
         }
       });
