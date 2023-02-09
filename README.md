@@ -27,7 +27,8 @@
 
 ### 여러분들의 맛집 저장소가 되어드리겠습니다. 지금 바로 조인하세요.
 
-<img width="{100%}" src="{https://user-images.githubusercontent.com/78721036/217855043-b1dfad42-b184-4941-909b-c84d9669e896.gif}"/>
+![](https://user-images.githubusercontent.com/78721036/217855043-b1dfad42-b184-4941-909b-c84d9669e896.gif)
+![](https://github.com/A-Meal-of-Today/demo/a-meal-of-today_demo.gif)
 
 -----
 ### 오늘 뭐 먹지 Features
