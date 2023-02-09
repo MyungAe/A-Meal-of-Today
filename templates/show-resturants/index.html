@@ -158,7 +158,7 @@
 
       function show() {
         if (sessionStorage.length == '0') {
-          window.location.href = 'http://localhost:5001/signin/';
+          window.location.href = 'http://43.200.1.210/signin/';
         } else {
           let nickname = sessionStorage.getItem('nickname');
           let nickname_html = `${nickname}`;
@@ -211,7 +211,7 @@
 
   <body>
     <header class="header">
-      <a href="http://localhost:5001">
+      <a href="http://43.200.1.210">
         <h1>오늘 뭐 먹지?!</h1>
       </a>
       <div class="menu_div">
@@ -226,15 +226,15 @@
         <nav class="menu_nav">
           <ul class="menu_list">
             <li>
-              <a href="http://localhost:5001/restaurant/"> 맛집 보기 </a>
+              <a href="http://43.200.1.210/restaurant/"> 맛집 보기 </a>
             </li>
             <li>
-              <a href="http://localhost:5001/restaurant/register">
+              <a href="http://43.200.1.210/restaurant/register">
                 맛집 등록하기
               </a>
             </li>
             <li>
-              <a href="http://localhost:5001/select"> 맛집 랜덤 추천받기 </a>
+              <a href="http://43.200.1.210/select"> 맛집 랜덤 추천받기 </a>
             </li>
           </ul>
         </nav>
