@@ -19,18 +19,6 @@ ul {
 
 a {
   text-decoration: none;
-  color: black;
-}
-
-/* 개발 편의 스타일 */
-
-.header {
-  color: white;
-  background-color: black;
-}
-
-a {
-  color: blueviolet;
 }
 
 /* 스타일 설정 */
@@ -38,6 +26,16 @@ a {
 body {
   width: 100vw;
   height: 100vh;
+  background-color: #faf4e2;
+  color: #1c773e;
+}
+
+a {
+  color: #1c773e;
+}
+
+main {
+  padding-top: 5%;
 }
 
 .header {

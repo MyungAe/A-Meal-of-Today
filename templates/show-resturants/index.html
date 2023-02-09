@@ -28,35 +28,29 @@
 
     <title>Header in Page</title>
     <style>
-<<<<<<< Updated upstream
-        main {
-          margin-top: 10%;
-        }
-        .mycards {
-            width: 80%;
-            margin: 20px auto 0px auto;
+      .mycards {
+        width: 80%;
+        margin: 20px auto 0px auto;
+      }
+      .onecard {
+        padding: 20px;
+      }
+      .onecard > div {
+        text-align: left;
+        padding: 20px;
+      }
 
-        }
-        .onecard {
-            padding: 20px;
-        }
-        .onecard > div {
-            text-align: left;
-            padding: 20px;
-        }
-
-        .btns > button {
-            margin-left: 10px;
-        }
-        .star {
-            font-size: 11pt;
-            margin: auto auto 10px auto;
-        }
-        .link {
-            font-size: 10pt;
-            font-color: gray;
-        }
-=======
+      .btns > button {
+        margin-left: 10px;
+      }
+      .star {
+        font-size: 11pt;
+        margin: auto auto 10px auto;
+      }
+      .link {
+        font-size: 10pt;
+        color: gray;
+      }
       .mycards {
         width: 80%;
         margin: 20px auto 0px auto;
@@ -105,7 +99,6 @@
         line-height: 23px;
         cursor: pointer;
       }
->>>>>>> Stashed changes
     </style>
     <script>
       $(document).ready(function () {
@@ -253,10 +246,19 @@
       </div>
       <div class="mycards">
         <div
-          class="row row-cols-1 row-cols-md-3 g-4"
+          class="row row-cols-1 row-cols-md-4 g-4"
           id="mycards-list"
         ></div>
       </div>
     </main>
+    <footer class="footer">
+      <p class="footer_copyright">
+        Copyright &copy; 2022.
+        <a href="https://github.com/MyungAe/A-Meal-of-Today">
+          A-Meal-of-Today Team
+        </a>
+        . All right reserved.
+      </p>
+    </footer>
   </body>
 </html>

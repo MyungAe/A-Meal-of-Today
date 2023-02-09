@@ -36,26 +36,8 @@ body {
   align-items: center;
 }
 
-.main > img {
-  width: 500px;
-}
-
-.main_wrap {
-  padding-bottom: 80px;
-}
-
-.main_wrap > button {
+.btn {
   background-color: #ffe259;
-  padding: 20px;
-  border-radius: 30px;
-  font-size: 24px;
-}
-
-.main_introduce_service {
-  font-size: 40px;
-  margin-bottom: 30px;
-}
-
-.main_introduce_service > div {
-  margin-bottom: 15px;
+  color: #000000;
+  border: 0;
 }
