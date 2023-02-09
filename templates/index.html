@@ -21,7 +21,7 @@
       $(document).ready(function () {
         if (sessionStorage.length == '1') {
           let nickname = sessionStorage.getItem('nickname');
-          let nickname_html = `${nickname}`;
+          let nickname_html = `${nickname} 님`;
           $('.nickname').append(nickname_html);
         }
       });
@@ -46,7 +46,6 @@
             class="nickname"
             id="nickname"
           ></span>
-          님
         </div>
         <nav class="menu_nav">
           <ul class="menu_list">
