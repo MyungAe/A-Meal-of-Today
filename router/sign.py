@@ -21,6 +21,8 @@ def home():
 def save_userdata():
     name_receive = request.form['name_give']
     # print(name_receive)
+    # msg = 'correct'
+
     users = list(db.users.find({}, {"_id": False, "user.nickname": True}))
     nicknames = []
 
@@ -38,5 +40,6 @@ def save_userdata():
         }
         db.users.insert_one(doc)
         msg = '가입완료!'
+
     return jsonify({'nickname': name_receive, 'msg': msg})
 

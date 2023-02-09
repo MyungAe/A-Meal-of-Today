@@ -76,14 +76,12 @@
       // }
 
       function login() {
-        let inputId = $('#new-id').val();
-        let inputName = $('#new-name').val();
-        let inputPw = $('#new-pw').val();
+        let inputName = $('#floatingInput').val();
 
         $.ajax({
           type: 'POST',
-          url: '/signin',
-          data: { id_give: inputId, pw_give: inputPw, name_give: inputName },
+          url: '/signin/',
+          data: { name_give: inputName },
           success: function (response) {
             let msg = response['msg'];
             alert(msg);
@@ -113,12 +111,12 @@
               <a href="http://43.200.1.210/restaurant/"> 맛집 보기 </a>
             </li>
             <li>
-              <a href="http://43.200.1.210/restaurant/register">
+              <a href="http://43.200.1.210/restaurant/register/">
                 맛집 등록하기
               </a>
             </li>
             <li>
-              <a href="http://43.200.1.210/select"> 맛집 랜덤 추천받기 </a>
+              <a href="http://43.200.1.210/select/"> 맛집 랜덤 추천받기 </a>
             </li>
           </ul>
         </nav>
@@ -139,7 +137,7 @@
               id="floatingInput"
               placeholder="닉네임을 입력해주세요!"
             />
-            <label for="floatingInput upload-form-color"></label>
+            <label for="floatingInput" ></label>
           </div>
           <!--        <button onclick="overlapName()" type="button" class="btn btn-dark">중복확인</button>-->
         </div>
